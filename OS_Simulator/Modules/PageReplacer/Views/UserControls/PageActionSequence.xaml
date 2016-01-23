@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="PageReplacer.Views.UserControls.PageActionSequence"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PageReplacer.Views.DataTemplateSelectors"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="accessPageTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Page}" FontWeight="Bold"  Foreground="Blue" />
+                <TextBlock Text=" page access" Foreground="Blue"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="setRbitOnPageTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Page}" FontWeight="Bold"  Foreground="Green" />
+                <TextBlock Text=" page set " Foreground="Green"/>
+                <TextBlock Text="R " FontWeight="Bold"  Foreground="Green"/>
+                <TextBlock Text="bit"  Foreground="Green"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="setMbitOnPageTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Page}" FontWeight="Bold"  Foreground="Green" />
+                <TextBlock Text=" page set " Foreground="Green"/>
+                <TextBlock Text="M " FontWeight="Bold"  Foreground="Green"/>
+                <TextBlock Text="bit"  Foreground="Green"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="removeRbitOnPageTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Page}" FontWeight="Bold"  Foreground="Red" />
+                <TextBlock Text=" page remove " Foreground="Red"/>
+                <TextBlock Text="R " FontWeight="Bold"  Foreground="Red"/>
+                <TextBlock Text="bit"  Foreground="Red"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="removeMbitOnPageTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Page}" FontWeight="Bold"   Foreground="Red" />
+                <TextBlock Text=" page remove " Foreground="Red"/>
+                <TextBlock Text="M " FontWeight="Bold"  Foreground="Red"/>
+                <TextBlock Text="bit"  Foreground="Red"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="periodRemoveAllRbitTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="All" FontWeight="Bold"   Foreground="Red" />
+                <TextBlock Text=" page remove " Foreground="Red"/>
+                <TextBlock Text="R " FontWeight="Bold"  Foreground="Red"/>
+                <TextBlock Text="bit"  Foreground="Red"/>
+            </StackPanel>
+        </DataTemplate>
+
+
+        <local:ActionTemplateSelector 
+                AccessPageTemplate="{StaticResource accessPageTemplate}" 
+                SetRbitOnPageTemplate="{StaticResource setRbitOnPageTemplate}" 
+                SetMbitOnPageTemplate="{StaticResource setMbitOnPageTemplate}" 
+                RemoveRbitOnPageTemplate="{StaticResource removeRbitOnPageTemplate}" 
+                RemoveMbitOnPageTemplate="{StaticResource removeMbitOnPageTemplate}" 
+                PeriodRemoveAllRbitTemplate="{StaticResource periodRemoveAllRbitTemplate}" 
+                x:Key="actionTemplateSelector" />
+
+    </UserControl.Resources>
+    <Grid>
+
+        <ItemsControl Grid.ColumnSpan="2" Grid.Row="7" 
+                          ItemsSource="{Binding PageActionSequence}"
+                          ItemTemplateSelector="{StaticResource actionTemplateSelector}">
+
+        </ItemsControl>
+    </Grid>
+</UserControl>

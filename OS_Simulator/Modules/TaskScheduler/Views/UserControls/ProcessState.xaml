@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="TaskScheduler.Views.UserControls.ProcessState"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+    <Grid>
+
+        <DataGrid CanUserAddRows="false"
+                HorizontalAlignment="Left" VerticalAlignment="Top"  
+                HeadersVisibility="Column" Background="LightGray" 
+                RowBackground="LightYellow" AlternatingRowBackground="LightBlue"
+                BorderBrush="Gray" AutoGenerateColumns="False" 
+                ItemsSource="{Binding SimulatorModel.ArrivedProcesses}" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"               Binding="{Binding ProcessName}" />
+                <DataGridTextColumn Header="Status"             Binding="{Binding ProcessStatus}"/>
+                <DataGridTextColumn Header="Runned"             Binding="{Binding TotalTimeRunned}" />
+                <DataGridTextColumn Header="Time Left"          Binding="{Binding TotalTimeLeft}" />
+                <DataGridTextColumn Header="Waited"             Binding="{Binding TimeWaited}" />
+                <DataGridTextColumn Header="CPU Time"           Binding="{Binding CpuTimeRunned}" />
+                <DataGridTextColumn Header="Async. Time"        Binding="{Binding AsynchronousTimeRunned}" />
+                <DataGridTextColumn Header="Synch. Time"        Binding="{Binding SynchronousTimeRunned}" />
+                <DataGridTextColumn Header="CPU Left"           Binding="{Binding CpuTimeLeft}" />
+                <DataGridTextColumn Header="Asynch. Left"       Binding="{Binding AsynchronousTimeLeft}" />
+                <DataGridTextColumn Header="Synchr. Left"       Binding="{Binding SynchronousTimeLeft}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

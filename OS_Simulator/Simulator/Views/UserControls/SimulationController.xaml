@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="Simulator.Views.UserControls.SimulationController"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+
+    <DockPanel>
+
+        <Grid DockPanel.Dock="Top">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0"
+                    Grid.Row="0"
+                    Margin="2"
+                    Command="{Binding PreviousStepCommand}">Previous Step</Button>
+            <Button Grid.Column="1"
+                    Grid.Row="0"
+                    Margin="2"
+                    Command="{Binding NextStepCommand}">Next Step</Button>
+
+        </Grid>
+
+        <Grid DockPanel.Dock="Top"
+              Margin="3,3" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <CheckBox Margin="3,0,0,0" Grid.Column="0" IsChecked="{Binding IsAutomaticSimulation}">Automatic</CheckBox>
+
+            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="15,0,5,0">
+                <TextBlock >Speed:</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding AutomaticSimulationSpeed}"></TextBlock>
+                    <TextBlock Text=" [s]"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                <Slider x:Name="AutomaticSimulationSpeed"
+                        Width="175" Margin="3"
+                        TickFrequency="0.1" IsSnapToTickEnabled="True"
+                        Minimum="0.1" Maximum="10"
+                        IsEnabled="{Binding IsAutomaticSimulation}"
+                        Value="{Binding AutomaticSimulationSpeed, Mode=TwoWay}"></Slider>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Margin="3,0" Grid.Column="0" IsEnabled="{Binding IsAutomaticSimulation}"
+                    Command="{Binding StartCommand}">Start</Button>
+            <Button Margin="3,0" Grid.Column="1" IsEnabled="{Binding IsAutomaticSimulation}"
+                    Command="{Binding PauseCommand}">Pause</Button>
+        </Grid>
+
+    </DockPanel>
+</UserControl>

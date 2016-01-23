@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MemoryAllocator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="MemoryAllocator.MemoryAllocator" Title="SWF6 WF">
+  <AllocationAlgorithm>WorstFit</AllocationAlgorithm>
+  <PhysicalMemory>
+    <SystemMemorySize>30</SystemMemorySize>
+    <UserMemorySize>370</UserMemorySize>
+  </PhysicalMemory>
+  <MemoryAllocation>
+    <UsedPartition Size="1" Id="1" />
+    <FreePartition Size="23" />
+    <UsedPartition Size="1" Id="2" />
+    <FreePartition Size="64" />
+    <UsedPartition Size="1" Id="3" />
+    <FreePartition Size="10" />
+    <UsedPartition Size="1" Id="4" />
+    <FreePartition Size="80" />
+    <UsedPartition Size="1" Id="5" />
+    <FreePartition Size="12" />
+    <UsedPartition Size="1" Id="6" />
+    <FreePartition Size="50" />
+    <UsedPartition Size="1" Id="7" />
+    <FreePartition Size="40" />
+    <UsedPartition Size="1" Id="8" />
+  </MemoryAllocation>
+  <AllocationRequestSequence>
+    <Allocate AllocatedNewSpaceId="10" RequiredSize="65" />
+    <Allocate AllocatedNewSpaceId="11" RequiredSize="21" />
+    <Allocate AllocatedNewSpaceId="12" RequiredSize="48" />
+    <Allocate AllocatedNewSpaceId="13" RequiredSize="13" />
+    <Allocate AllocatedNewSpaceId="14" RequiredSize="62" />
+  </AllocationRequestSequence>
+</MemoryAllocator>

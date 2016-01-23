@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VirtualAddressMapper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="VirtualAddressMapper.VirtualAddressMapper" Title="Sim2">
+  <Addressing AddressingBits="32" >
+    <BitsToAddressPages>20</BitsToAddressPages>
+    <MemoryAccessTime>100</MemoryAccessTime>    
+    <QuantityOfPagesStorableInUserMemory>20</QuantityOfPagesStorableInUserMemory>
+	<IsAssociativeMemoryInUse>false</IsAssociativeMemoryInUse>
+    <QuantityOfAddressesStorableInAssociativeMemory>10</QuantityOfAddressesStorableInAssociativeMemory>
+    <AssociativeMemoryAccessTime>20</AssociativeMemoryAccessTime>
+    <ProcessAddressRangeByLastAddress Address="100000" />
+  </Addressing>
+  <ProcessPageAndMemoryPageMapping>
+    <Mapping ProcessPage="1" MemoryFrame="0" />
+    <Mapping ProcessPage="5" MemoryFrame="4" />
+    <Mapping ProcessPage="9" MemoryFrame="4" />
+    <Mapping ProcessPage="12" MemoryFrame="4" />
+    <Mapping ProcessPage="0" MemoryFrame="3" />
+    <Mapping ProcessPage="9" MemoryFrame="7" />
+  </ProcessPageAndMemoryPageMapping>
+  <AssociativeMemoryInitialContent>
+    <Page>5</Page>
+	<Page>0</Page>
+    <Page>2</Page>
+  </AssociativeMemoryInitialContent>
+  <ActionSequence>	
+    <ResolveVirtualAddress Address="4095" />
+    <ResolveVirtualAddress Address="4096" />
+    <ResolveVirtualAddress Address="1000" />
+    <AddPageToMemory MemoryFrame="10" ProcessPage="4" />
+    <ResolveVirtualAddress Address="16400" />
+    <AddToAssociativeMemory ProcessPage="1" />
+    <ResolveVirtualAddress Address="16400" />
+    <AddPageToMemory MemoryFrame="10" ProcessPage="3" />
+    <RemoveFromAssociativeMemory ProcessPage="5" />
+    <ResolveVirtualAddress Address="17002" />
+    <AddPageToMemory MemoryFrame="14" ProcessPage="24" />
+    <ResolveVirtualAddress Address="21110" />
+    <ResolveVirtualAddress Address="0" />
+    <RemovePageFromMemory MemoryFrame="0" />
+    <ResolveVirtualAddress Address="16386" />
+    <ResolveVirtualAddress Address="68800" />
+  </ActionSequence>
+</VirtualAddressMapper>

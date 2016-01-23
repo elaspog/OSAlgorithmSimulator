@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PageReplacer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="PageReplacer.PageReplacer" Title="Sim_1 LRU(3)">
+  <CountOfPagesForProcess>4</CountOfPagesForProcess>
+  <PageReplacerAlgorithm>
+    <AlgorithmName>LRU</AlgorithmName>
+  </PageReplacerAlgorithm>
+  <PageActionSequence>
+    <AccessPage Page="9" />
+    <AccessPage Page="5" />
+    <AccessPage Page="8" />
+    <AccessPage Page="3" />
+    <AccessPage Page="2" />
+    <AccessPage Page="6" />
+    <AccessPage Page="3" />
+    <AccessPage Page="7" />
+    <AccessPage Page="7" />
+    <AccessPage Page="9" />
+    <AccessPage Page="7" />
+    <AccessPage Page="3" />
+    <AccessPage Page="7" />
+    <AccessPage Page="2" />
+    <AccessPage Page="4" />
+  </PageActionSequence>
+  <MemoryAccessTime>10</MemoryAccessTime>
+  <PageFaultServiceTime>100</PageFaultServiceTime>
+</PageReplacer>

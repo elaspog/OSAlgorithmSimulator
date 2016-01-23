@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="VirtualAddressMapper.Views.UserControls.AddressNumberSystemSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Converters="clr-namespace:VirtualAddressMapper.Views.Converters"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+
+    <UserControl.Resources>
+            
+        <Converters:NumberBaseConverter x:Key="numberBaseConverter"></Converters:NumberBaseConverter>
+        
+        
+    </UserControl.Resources>
+    
+    
+    <WrapPanel Orientation="Horizontal">
+        <RadioButton GroupName="NumberSystem"
+                     Content="Bin"
+                     Margin="10,0,0,0"
+                     IsChecked="{Binding Path=NumberBase, Mode=TwoWay, Converter={StaticResource numberBaseConverter}, ConverterParameter=Binary}"></RadioButton>
+        <RadioButton GroupName="NumberSystem"
+                     Content="Dec"
+                     Margin="10,0,0,0"
+                     IsChecked="{Binding Path=NumberBase, Mode=TwoWay, Converter={StaticResource numberBaseConverter}, ConverterParameter=Decimal}"></RadioButton>
+        <RadioButton GroupName="NumberSystem"
+                     Content="Hex"
+                     Margin="10,0,0,0"
+                     IsChecked="{Binding Path=NumberBase, Mode=TwoWay, Converter={StaticResource numberBaseConverter}, ConverterParameter=Hexadecimal}"></RadioButton>
+
+    </WrapPanel>
+    
+</UserControl>

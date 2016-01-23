@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="TaskScheduler.Views.UserControls.GanntDiagram"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:TaskScheduler.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+    
+    <UserControl.Resources>
+
+        <local:WidthMultiplicatorConverter x:Key="widthMultiplicatorConverter" />
+
+
+        <DataTemplate x:Key="otherGanntElementTemplate">
+            <StackPanel Width="{Binding PartTimeSum, Converter={StaticResource widthMultiplicatorConverter}}"
+                        Height="40">
+                <Border BorderThickness="1" BorderBrush="Black" Height="40" VerticalAlignment="Center">
+                    <!-- Processnevet tároló dobozok -->
+                    <TextBlock Text="{Binding ProcessName}"
+                                   TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"
+                                   />
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="firstGanntElementTemplate">
+            <StackPanel Width="{Binding PartTimeSum, Converter={StaticResource widthMultiplicatorConverter}}"
+                        Height="40">
+                <Border BorderThickness="1" BorderBrush="Black" Opacity="0.1" Height="40" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding ProcessName}"
+                                   TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+
+        <local:GanntTemplateSelector 
+                FirstGanntElementTemplate="{StaticResource firstGanntElementTemplate}" 
+                OtherGanntElementTemplate="{StaticResource otherGanntElementTemplate}" 
+                x:Key="ganntTemplateSelector" />
+        
+        
+
+
+        <DataTemplate x:Key="queueList">
+            <TextBlock Text="{Binding}" TextAlignment="Center" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="normalListTemplate">
+            <ItemsControl ItemsSource="{Binding}"
+                          ItemTemplate="{StaticResource queueList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel></StackPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+
+        <DataTemplate x:Key="emptylListTemplate">
+            <TextBlock Text="-" TextAlignment="Center" />
+        </DataTemplate>
+
+
+        <local:NormalListOrEmptyListSelector 
+                NormalListTemplate="{StaticResource normalListTemplate}" 
+                EmptylListTemplate="{StaticResource emptylListTemplate}" 
+                x:Key="normalListOrEmptyListSelector" />
+        
+
+        <DataTemplate x:Key="queueTemplate">
+            <StackPanel Width="{Binding Difference, Converter={StaticResource widthMultiplicatorConverter}}">
+                    <!-- az időt jelölő számok -->
+                    <TextBlock Text="{Binding IntervalEnd}" 
+                               TextAlignment="Right" />
+
+
+
+                <Line   X1="{Binding Difference, Converter={StaticResource widthMultiplicatorConverter}}" Y1="0"
+                        X2="{Binding Difference, Converter={StaticResource widthMultiplicatorConverter}}" Y2="25"
+                        Stroke="Black" StrokeDashArray="2, 2"
+                        StrokeThickness="1" />
+
+                <ContentControl Content="{Binding Queue}"
+                                ContentTemplateSelector="{StaticResource normalListOrEmptyListSelector}"></ContentControl>
+
+
+            </StackPanel>
+        </DataTemplate>
+
+
+        
+        
+    </UserControl.Resources>
+    
+    
+    
+    <StackPanel>
+
+        <ItemsControl ItemsSource="{Binding ProcessQueueCouples}"
+                      ItemTemplateSelector="{StaticResource ganntTemplateSelector}" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+
+        <ItemsControl ItemsSource="{Binding QueueAssigns}"
+                      ItemTemplate="{StaticResource queueTemplate}" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        
+
+    </StackPanel>
+    
+</UserControl>

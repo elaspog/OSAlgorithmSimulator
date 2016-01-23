@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="TaskScheduler.Views.UserControls.ProcessInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+
+    <UserControl.Resources>
+        
+        <DataTemplate x:Key="ItemTemplate" >
+            <Border BorderBrush="Black" BorderThickness="1" Margin="10,0,0,3">
+                <StackPanel >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding ProcessName}" TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text=" : " TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding ProcessStatus}" TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                    <DataGrid CanUserAddRows="false"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"  
+                                HeadersVisibility="Column" Background="LightGray" CanUserSortColumns="False"
+                                RowBackground="LightYellow" AlternatingRowBackground="LightBlue"
+                                BorderBrush="Gray" AutoGenerateColumns="False"  IsReadOnly="True" 
+                                ItemsSource="{Binding BurstSequence}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Burst Type" Binding="{Binding BurstType}" />
+                            <DataGridTextColumn Header="Burst Time" Binding="{Binding BurstTime}"/>
+                            <DataGridTextColumn Header="Resource" Binding="{Binding ResourceName}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                        <TextBlock Text="Total left : " TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding TotalTimeLeft}" TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        
+    </UserControl.Resources>
+    
+    
+    <StackPanel>
+        <ItemsControl ItemsSource="{Binding SimulatorModel.ArrivedProcesses}" 
+                      ItemTemplate="{StaticResource ItemTemplate}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </StackPanel>
+    
+</UserControl>

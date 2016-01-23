@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="VirtualAddressMapper.Views.VAM_StatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:Converters="clr-namespace:VirtualAddressMapper.Views.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <Converters:BoolVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    
+    <StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.ColumnSpan="4" Grid.Row="0" FontSize="16" Margin="10,0,0,3"
+                       Text="Calculated static values"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="AddressingBits:"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SimulatorModel.Addressing.AddressingBits}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="1" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="1" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="BitsToAddressPages:"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SimulatorModel.Addressing.BitsToAddressPages}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="2" Text="Max number of records in Page Table:"/>
+            <TextBlock Grid.Column="3" Grid.Row="2" Text="{Binding SimulatorModel.Addressing.NumberOfRecordsInPageTable}" FontWeight="Bold"  Foreground="Blue"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="BitsToAddressOnPage:"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SimulatorModel.Addressing.BitsToAddressOnPage}" FontWeight="Bold"  Foreground="Blue"/>
+            <TextBlock Grid.Column="2" Grid.Row="3" Text="Page size:"/>
+            <TextBlock Grid.Column="3" Grid.Row="3" Text="{Binding SimulatorModel.Addressing.NumberOfAddressesOnPage}" FontWeight="Bold"  Foreground="Blue"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="4" Text=""/>
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="4" Text="Memory access time:"/>
+            <TextBlock Grid.Column="3" Grid.Row="4" Text="{Binding SimulatorModel.Addressing.MemoryAccessTime}" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="" />
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="5" Text="Associative memory access time:" 
+                       Visibility="{Binding Path=SimulatorModel.Addressing.IsAssociativeMemoryInUse, Converter={StaticResource BoolToVis}}" />
+            <TextBlock Grid.Column="3" Grid.Row="5" Text="{Binding SimulatorModel.Addressing.AssociativeMemoryAccessTime}" FontWeight="Bold"
+                       Visibility="{Binding Path=SimulatorModel.Addressing.IsAssociativeMemoryInUse, Converter={StaticResource BoolToVis}}" />
+            
+            
+            <TextBlock Grid.ColumnSpan="4" Grid.Row="9" FontSize="16" Margin="10,0,0,3"
+                       Text="Calculated dynamic values"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="10" Text="Associative memory hits:"/>
+            <TextBlock Grid.Column="1" Grid.Row="10" Text="{Binding SimulatorModel.Metrics.AssociativeHits}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="10" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="10" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="11" Text="Memory accesses:"/>
+            <TextBlock Grid.Column="1" Grid.Row="11" Text="{Binding SimulatorModel.Metrics.MemoryAccesses}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="11" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="11" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="12" Text="Page Table hits:"/>
+            <TextBlock Grid.Column="1" Grid.Row="12" Text="{Binding SimulatorModel.Metrics.PageTableHits}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="12" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="12" Text="" FontWeight="Bold"/>
+
+
+            <TextBlock Grid.Column="0" Grid.Row="13" Text=""/>
+            <TextBlock Grid.Column="1" Grid.Row="13" Text="" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="13" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="13" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="14" Text="Avarage (effective) memory access:"/>
+            <TextBlock Grid.Column="1" Grid.Row="14" Text="{Binding SimulatorModel.Metrics.EffectiveMemoryAccess}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="14" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="14" Text="" FontWeight="Bold"/>
+
+        </Grid>
+    </StackPanel>
+</UserControl>

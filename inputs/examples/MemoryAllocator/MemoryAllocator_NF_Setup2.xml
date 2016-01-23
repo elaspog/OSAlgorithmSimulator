@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MemoryAllocator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="MemoryAllocator.MemoryAllocator" Title="Sim2 NF">
+  <AllocationAlgorithm>Next Fit</AllocationAlgorithm>
+  <PhysicalMemory>
+    <SystemMemorySize>40</SystemMemorySize>
+    <UserMemorySize>360</UserMemorySize>
+  </PhysicalMemory>
+  <MemoryAllocation>
+    <UsedPartition Size="10" Id="1" />
+    <FreePartition Size="55" />
+    <FreePartition Size="32" />
+    <UsedPartition Size="0" Id="2" />
+    <FreePartition Size="12" />
+    <FreePartition Size="30" />
+    <UsedPartition Size="46" Id="3" />
+    <FreePartition Size="51" />
+    <UsedPartition Size="10" Id="4" />
+    <UsedPartition Size="10" Id="5" />
+    <FreePartition Size="12" />
+    <FreePartition Size="30" />
+    <UsedPartition Size="26" Id="6" />
+    <FreePartition Size="21" />
+    <UsedPartition Size="10" Id="7" />
+    <FreePartition Size="21" />
+    <UsedPartition Size="26" Id="8" />
+    <FreePartition Size="51" />
+  </MemoryAllocation>
+  <AllocationRequestSequence>
+    <Allocate AllocatedNewSpaceId="10" RequiredSize="20" />
+    <Allocate AllocatedNewSpaceId="11" RequiredSize="18" />
+    <Allocate AllocatedNewSpaceId="12" RequiredSize="32" />
+    <Free ExistingId="6" />
+    <Free ExistingId="11" />
+    <Allocate AllocatedNewSpaceId="13" RequiredSize="23" />
+    <Free ExistingId="2" />
+    <Allocate AllocatedNewSpaceId="14" RequiredSize="43" />
+    <Allocate AllocatedNewSpaceId="15" RequiredSize="27" />
+    <Free ExistingId="13" />
+    <Free ExistingId="1" />
+  </AllocationRequestSequence>
+</MemoryAllocator>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PageReplacer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="PageReplacer.PageReplacer" Title="SimComp1 SC(4)">
+  <CountOfPagesForProcess>4</CountOfPagesForProcess>
+  <PageReplacerAlgorithm>
+    <AlgorithmName>SC</AlgorithmName>
+  </PageReplacerAlgorithm>
+  <PageActionSequence>
+    <AccessPage Page="0" />
+    <AccessPage Page="1" />
+    <SetMbitOnPage Page="1" />
+    <SetRbitOnPage Page="0" />
+    <AccessPage Page="2" />
+    <AccessPage Page="5" />
+    <RemoveMbitOnPage Page="1" />
+    <SetRbitOnPage Page="2" />
+    <AccessPage Page="3" />
+    <SetMbitOnPage Page="3" />
+	<PeriodRemoveAllRbit />
+    <AccessPage Page="0" />
+    <SetMbitOnPage Page="2" />
+    <AccessPage Page="1" />
+    <SetRbitOnPage Page="3" />
+    <AccessPage Page="4" />
+    <AccessPage Page="0" />
+    <SetMbitOnPage Page="1" />
+    <AccessPage Page="1" />
+    <AccessPage Page="2" />
+    <RemoveRbitOnPage Page="3" />
+    <AccessPage Page="3" />
+    <SetRbitOnPage Page="0" />
+    <SetRbitOnPage Page="2" />
+    <AccessPage Page="5" />
+    <SetRbitOnPage Page="1" />
+    <AccessPage Page="4" />
+    <AccessPage Page="0" />
+    <AccessPage Page="1" />
+    <SetRbitOnPage Page="1" />
+    <SetMbitOnPage Page="2" />
+    <RemoveRbitOnPage Page="3" />
+    <RemoveMbitOnPage Page="4" />
+  </PageActionSequence>
+  <MemoryAccessTime>10</MemoryAccessTime>
+  <PageFaultServiceTime>100</PageFaultServiceTime>
+</PageReplacer>

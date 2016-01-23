@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TaskScheduler xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="TaskScheduler.TaskScheduler" Title="SRTF S2">
+  <SchedulerAlgorithm>
+    <AlgorithmName>SRTF</AlgorithmName>
+  </SchedulerAlgorithm>
+  <Resources>
+    <Resource ResourceName="res_1" Quantity="1" />
+    <Resource ResourceName="res_2" Quantity="2" />
+    <Resource ResourceName="res_5" Quantity="3" />
+  </Resources>
+  <Processes>
+    <Process ProcessName="P1">
+      <ArrivalTime>0</ArrivalTime>
+      <BurstSequence>
+        <CpuBurst BurstTime="10" />
+        <IoBurstAsynchronous BurstTime="10" ResourceName="res_1" />
+        <IoBurstSynchronous BurstTime="20" ResourceName="res_2" />
+        <CpuBurst BurstTime="10" />
+      </BurstSequence>
+    </Process>
+    <Process ProcessName="P2">
+      <ArrivalTime>5</ArrivalTime>
+      <BurstSequence>
+        <CpuBurst BurstTime="50" />
+        <IoBurstAsynchronous BurstTime="10" ResourceName="res_5" />
+        <CpuBurst BurstTime="50" />
+        <IoBurstSynchronous BurstTime="20" ResourceName="res_2" />
+        <CpuBurst BurstTime="10" />
+      </BurstSequence>
+    </Process>
+  </Processes>
+  <AvarageOverheadTime>10</AvarageOverheadTime>
+</TaskScheduler>

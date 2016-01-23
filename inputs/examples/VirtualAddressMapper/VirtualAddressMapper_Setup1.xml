@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VirtualAddressMapper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="VirtualAddressMapper.VirtualAddressMapper" Title="Sim1 TLB">
+  <Addressing AddressingBits="32" >
+    <BitsToAddressPages>20</BitsToAddressPages>
+    <MemoryAccessTime>100</MemoryAccessTime>    
+    <QuantityOfPagesStorableInUserMemory>20</QuantityOfPagesStorableInUserMemory>
+	<IsAssociativeMemoryInUse>true</IsAssociativeMemoryInUse>
+    <QuantityOfAddressesStorableInAssociativeMemory>10</QuantityOfAddressesStorableInAssociativeMemory>
+    <AssociativeMemoryAccessTime>20</AssociativeMemoryAccessTime>
+    <ProcessAddressRangeByLastAddress Address="100000" />
+  </Addressing>
+  <ProcessPageAndMemoryPageMapping>
+    <Mapping ProcessPage="1" MemoryFrame="0" />
+    <Mapping ProcessPage="5" MemoryFrame="8" />
+    <Mapping ProcessPage="9" MemoryFrame="2" />
+    <Mapping ProcessPage="10" MemoryFrame="11" />
+    <Mapping ProcessPage="12" MemoryFrame="2" />
+    <Mapping ProcessPage="0" MemoryFrame="5" />
+    <Mapping ProcessPage="7" MemoryFrame="7" />
+  </ProcessPageAndMemoryPageMapping>
+  <AssociativeMemoryInitialContent>
+    <Page>1</Page>
+    <Page>2</Page>
+	<Page>0</Page>
+    <Page>9</Page>
+  </AssociativeMemoryInitialContent>
+  <ActionSequence>
+    <ResolveVirtualAddress Address="4096" />
+    <RemoveFromAssociativeMemory ProcessPage="1" />
+    <ResolveVirtualAddress Address="4100" />
+    <ResolveVirtualAddress Address="4095" />
+    <ResolveVirtualAddress Address="80" />
+    <AddPageToMemory MemoryFrame="10" ProcessPage="3" />
+    <ResolveVirtualAddress Address="13005" />
+    <AddToAssociativeMemory ProcessPage="3" />
+    <ResolveVirtualAddress Address="13007" />
+    <AddPageToMemory MemoryFrame="17" ProcessPage="24" />
+    <ResolveVirtualAddress Address="100000" />
+    <ResolveVirtualAddress Address="21110" />
+    <RemovePageFromMemory MemoryFrame="3" />
+    <AddPageToMemory MemoryFrame="3" ProcessPage="17" />
+    <ResolveVirtualAddress Address="70000" />
+    <ResolveVirtualAddress Address="100005" />
+    <ResolveVirtualAddress Address="70010" />
+  </ActionSequence>
+</VirtualAddressMapper>

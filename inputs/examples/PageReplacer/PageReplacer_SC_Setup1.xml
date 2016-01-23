@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PageReplacer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="PageReplacer.PageReplacer" Title="Sim_1 SC(4)">
+  <CountOfPagesForProcess>4</CountOfPagesForProcess>
+  <PageReplacerAlgorithm>
+    <AlgorithmName>SC</AlgorithmName>
+  </PageReplacerAlgorithm>
+  <PageActionSequence>
+    <AccessPage Page="0" />
+    <AccessPage Page="1" />
+    <AccessPage Page="2" />
+    <AccessPage Page="3" />
+    <AccessPage Page="0" />
+    <AccessPage Page="1" />
+    <AccessPage Page="4" />
+    <AccessPage Page="0" />
+    <AccessPage Page="1" />
+    <AccessPage Page="2" />
+    <AccessPage Page="3" />
+    <AccessPage Page="4" />
+    <AccessPage Page="0" />
+    <AccessPage Page="1" />
+  </PageActionSequence>
+  <MemoryAccessTime>10</MemoryAccessTime>
+  <PageFaultServiceTime>100</PageFaultServiceTime>
+</PageReplacer>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AllocationActionBase" nillable="true" type="AllocationActionBase" />
+  <xs:complexType name="AllocationActionBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Notifier" abstract="true" />
+  <xs:element name="AllocateAction" nillable="true" type="AllocateAction" />
+  <xs:complexType name="AllocateAction">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AllocationActionBase">
+        <xs:attribute name="AllocatedNewSpaceId" type="xs:int" use="required" />
+        <xs:attribute name="RequiredSize" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FreeAction" nillable="true" type="FreeAction" />
+  <xs:complexType name="FreeAction">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AllocationActionBase">
+        <xs:attribute name="ExistingId" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MemoryAllocator" nillable="true" type="MA_Descriptor" />
+  <xs:complexType name="MA_Descriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DescriptorBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AllocationAlgorithm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PhysicalMemory" type="PhysicalMemory" />
+          <xs:element minOccurs="0" maxOccurs="1" name="MemoryAllocation" type="ArrayOfChoice1" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AllocationRequestSequence" type="ArrayOfChoice2" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DescriptorBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="FQN_NamespaceAndClassName" type="xs:string" />
+        <xs:attribute name="Title" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PhysicalMemory">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SystemMemorySize" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserMemorySize" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfChoice1">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element minOccurs="1" maxOccurs="1" name="UsedPartition" nillable="true" type="UsedPartition" />
+      <xs:element minOccurs="1" maxOccurs="1" name="FreePartition" nillable="true" type="FreePartition" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="UsedPartition">
+    <xs:complexContent mixed="false">
+      <xs:extension base="PartitionBase">
+        <xs:attribute name="Id" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PartitionBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="Size" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FreePartition">
+    <xs:complexContent mixed="false">
+      <xs:extension base="PartitionBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfChoice2">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element minOccurs="1" maxOccurs="1" name="Allocate" nillable="true" type="AllocateAction" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Free" nillable="true" type="FreeAction" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="PartitionBase" nillable="true" type="PartitionBase" />
+  <xs:element name="PhysicalMemory" nillable="true" type="PhysicalMemory" />
+  <xs:element name="UsedPartition" nillable="true" type="UsedPartition" />
+  <xs:element name="FreePartition" nillable="true" type="FreePartition" />
+</xs:schema>

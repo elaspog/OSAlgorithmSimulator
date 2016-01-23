@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "Simulator\Simulator.csproj", "{BF595B94-2291-44BC-88F7-772F6AFEF422}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator.Infrastructure", "Simulator.Infrastructure\Simulator.Infrastructure.csproj", "{8AF86653-2C01-4D9F-B227-7F34D55AFCC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3292071F-56B0-45CE-A965-B324F7CB942D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryAllocator", "Modules\MemoryAllocator\MemoryAllocator.csproj", "{B3CEB02F-49DC-4DFD-8E0D-87978E3D5D79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageReplacer", "Modules\PageReplacer\PageReplacer.csproj", "{C537FEAB-6744-4CD6-9553-36A3451D68CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskScheduler", "Modules\TaskScheduler\TaskScheduler.csproj", "{4EAA7ADC-40B8-4C4D-BFE5-1C3BC77FE518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualAddressMapper", "Modules\VirtualAddressMapper\VirtualAddressMapper.csproj", "{A8CFEDEE-83E3-42F1-AE7B-A24FC06E6BE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF595B94-2291-44BC-88F7-772F6AFEF422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF595B94-2291-44BC-88F7-772F6AFEF422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF595B94-2291-44BC-88F7-772F6AFEF422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF595B94-2291-44BC-88F7-772F6AFEF422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF86653-2C01-4D9F-B227-7F34D55AFCC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF86653-2C01-4D9F-B227-7F34D55AFCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF86653-2C01-4D9F-B227-7F34D55AFCC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AF86653-2C01-4D9F-B227-7F34D55AFCC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3CEB02F-49DC-4DFD-8E0D-87978E3D5D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3CEB02F-49DC-4DFD-8E0D-87978E3D5D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3CEB02F-49DC-4DFD-8E0D-87978E3D5D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3CEB02F-49DC-4DFD-8E0D-87978E3D5D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C537FEAB-6744-4CD6-9553-36A3451D68CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C537FEAB-6744-4CD6-9553-36A3451D68CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C537FEAB-6744-4CD6-9553-36A3451D68CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C537FEAB-6744-4CD6-9553-36A3451D68CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EAA7ADC-40B8-4C4D-BFE5-1C3BC77FE518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EAA7ADC-40B8-4C4D-BFE5-1C3BC77FE518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EAA7ADC-40B8-4C4D-BFE5-1C3BC77FE518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EAA7ADC-40B8-4C4D-BFE5-1C3BC77FE518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8CFEDEE-83E3-42F1-AE7B-A24FC06E6BE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8CFEDEE-83E3-42F1-AE7B-A24FC06E6BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8CFEDEE-83E3-42F1-AE7B-A24FC06E6BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8CFEDEE-83E3-42F1-AE7B-A24FC06E6BE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B3CEB02F-49DC-4DFD-8E0D-87978E3D5D79} = {3292071F-56B0-45CE-A965-B324F7CB942D}
+		{C537FEAB-6744-4CD6-9553-36A3451D68CC} = {3292071F-56B0-45CE-A965-B324F7CB942D}
+		{4EAA7ADC-40B8-4C4D-BFE5-1C3BC77FE518} = {3292071F-56B0-45CE-A965-B324F7CB942D}
+		{A8CFEDEE-83E3-42F1-AE7B-A24FC06E6BE3} = {3292071F-56B0-45CE-A965-B324F7CB942D}
+	EndGlobalSection
+EndGlobal

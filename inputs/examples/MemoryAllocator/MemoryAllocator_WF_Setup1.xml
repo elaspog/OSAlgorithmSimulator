@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MemoryAllocator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="MemoryAllocator.MemoryAllocator" Title="Sim1 WF">
+  <AllocationAlgorithm>WorstFit</AllocationAlgorithm>
+  <PhysicalMemory>
+    <SystemMemorySize>30</SystemMemorySize>
+    <UserMemorySize>370</UserMemorySize>
+  </PhysicalMemory>
+  <MemoryAllocation>
+    <UsedPartition Size="0" Id="1" />
+    <FreePartition Size="23" />
+    <UsedPartition Size="0" Id="2" />
+    <FreePartition Size="64" />
+    <UsedPartition Size="0" Id="3" />
+    <FreePartition Size="10" />
+    <UsedPartition Size="0" Id="4" />
+    <FreePartition Size="80" />
+    <UsedPartition Size="0" Id="5" />
+    <FreePartition Size="12" />
+    <UsedPartition Size="0" Id="6" />
+    <FreePartition Size="50" />
+    <UsedPartition Size="0" Id="7" />
+    <FreePartition Size="40" />
+    <UsedPartition Size="0" Id="8" />
+  </MemoryAllocation>
+  <AllocationRequestSequence>
+    <Allocate AllocatedNewSpaceId="10" RequiredSize="65" />
+    <Allocate AllocatedNewSpaceId="10" RequiredSize="21" />
+    <Allocate AllocatedNewSpaceId="10" RequiredSize="48" />
+    <Allocate AllocatedNewSpaceId="10" RequiredSize="13" />
+    <Allocate AllocatedNewSpaceId="10" RequiredSize="62" />
+  </AllocationRequestSequence>
+</MemoryAllocator>

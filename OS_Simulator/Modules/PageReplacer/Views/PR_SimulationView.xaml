@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="PageReplacer.Views.PR_SimulationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:PageReplacer.Views.DataTemplateSelectors"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:PageReplacer.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.ColumnSpan="2" Grid.Column="0"  Grid.Row="2" FontSize="16" Margin="10,0,0,3"
+                       Text="Page action and table history"/>
+
+            <TextBlock Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" FontSize="16" Margin="10,0,0,3"
+                       Text="Page action sequence"/>
+
+
+            <UserControls:PageActionSequence  Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="3" DataContext="{Binding SimulatorModel}"></UserControls:PageActionSequence>
+
+            <UserControls:HistoricalPageTable Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="3" DataContext="{Binding SimulatorModel}"></UserControls:HistoricalPageTable>
+
+
+            
+        </Grid>
+
+    </StackPanel>
+</UserControl>

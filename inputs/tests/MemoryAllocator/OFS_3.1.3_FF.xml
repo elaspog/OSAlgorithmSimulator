@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MemoryAllocator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="MemoryAllocator.MemoryAllocator" Title="OFS 313 FF">
+  <AllocationAlgorithm>FirstFit</AllocationAlgorithm>
+  <PhysicalMemory>
+    <SystemMemorySize>50</SystemMemorySize>
+    <UserMemorySize>250</UserMemorySize>
+  </PhysicalMemory>
+  <MemoryAllocation>
+    <UsedPartition Size="1" Id="1" />
+    <FreePartition Size="25" />
+    <UsedPartition Size="1" Id="2" />
+    <FreePartition Size="30" />
+    <UsedPartition Size="1" Id="3" />
+    <FreePartition Size="10" />
+    <UsedPartition Size="1" Id="4" />
+    <FreePartition Size="20" />
+    <UsedPartition Size="1" Id="5" />
+    <FreePartition Size="70" />
+    <UsedPartition Size="1" Id="6" />
+    <FreePartition Size="40" />
+    <UsedPartition Size="1" Id="7" />
+    <FreePartition Size="40" />
+    <UsedPartition Size="1" Id="8" />
+  </MemoryAllocation>
+  <AllocationRequestSequence>
+    <Allocate AllocatedNewSpaceId="10" RequiredSize="40" />
+    <Allocate AllocatedNewSpaceId="11" RequiredSize="35" />
+    <Allocate AllocatedNewSpaceId="12" RequiredSize="28" />
+    <Allocate AllocatedNewSpaceId="13" RequiredSize="15" />
+    <Allocate AllocatedNewSpaceId="14" RequiredSize="16" />
+  </AllocationRequestSequence>
+</MemoryAllocator>

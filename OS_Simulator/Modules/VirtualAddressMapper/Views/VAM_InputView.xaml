@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="VirtualAddressMapper.Views.VAM_InputView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:VirtualAddressMapper.Views"
+             xmlns:UserControls="clr-namespace:VirtualAddressMapper.Views.UserControls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  >
+    
+    <StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.ColumnSpan="4" Grid.Row="0" FontSize="16" Margin="10,0,0,3"
+                       Text="Input configuration"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="AddressingBits:"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Addressing.AddressingBits}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="1" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="1" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="BitsToAddressPages:"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Addressing.BitsToAddressPages}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="2" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="2" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Memory size (number of pages):"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Addressing.QuantityOfPagesStorableInUserMemory}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="4" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="4" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Memory access time:"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding Addressing.MemoryAccessTime}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="5" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="5" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Process address range (last address):"/>
+            <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding Addressing.ProcessAddressRangeByLastAddress.Address}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="6" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="6" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="7" Text="Associative memory in use:" />
+            <TextBlock Grid.Column="1" Grid.Row="7" Text="{Binding Addressing.IsAssociativeMemoryInUse}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="7" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="7" Text="" FontWeight="Bold"/>
+
+
+            <TextBlock Grid.Column="0" Grid.Row="8" Text="Associative memory size (number of addresses):" />
+            <TextBlock Grid.Column="1" Grid.Row="8" Text="{Binding Addressing.QuantityOfAddressesStorableInAssociativeMemory}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="8" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="8" Text="" FontWeight="Bold"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="9" Text="Associative memory access time:"/>
+            <TextBlock Grid.Column="1" Grid.Row="9" Text="{Binding Addressing.AssociativeMemoryAccessTime}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="9" Text=""/>
+            <TextBlock Grid.Column="3" Grid.Row="9" Text="" FontWeight="Bold"/>
+
+
+
+            <TextBlock Grid.ColumnSpan="2" Grid.Row="10" FontSize="16" Margin="10,0,0,3"
+                       Text="Process page - Physical memory mapping"/>
+
+            <TextBlock Grid.ColumnSpan="2" Grid.Row="12" FontSize="16" Margin="10,0,0,3"
+                       Text="Associative memory content"/>
+
+
+            <DataGrid  Grid.ColumnSpan="2" Grid.Row="13" CanUserAddRows="false"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"  
+                       HeadersVisibility="Column" Background="LightGray" 
+                       RowBackground="LightYellow" AlternatingRowBackground="LightBlue"
+                       BorderBrush="Gray" AutoGenerateColumns="False" 
+                       ItemsSource="{Binding AssociativeMemoryInitialContent}" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Page" Binding="{Binding}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            
+            <TextBlock Grid.ColumnSpan="2" Grid.RowSpan="4" Grid.Row="12" Grid.Column="2" FontSize="16" Margin="10,0,0,3"
+                       Text="Action sequence"/>
+
+
+            <UserControls:ActionTemplate  Grid.RowSpan="3" Grid.ColumnSpan="2" Grid.Row="13" Grid.Column="2" 
+                                          DataContext="{Binding ActionSequence}"></UserControls:ActionTemplate>
+
+
+            <UserControls:ProcePageMemPageMapping Grid.ColumnSpan="2"  Grid.Row="11" Grid.Column="0" 
+                                                  DataContext="{Binding ProcessPageAndMemoryPageMapping}"></UserControls:ProcePageMemPageMapping> 
+
+        </Grid>
+
+    </StackPanel>
+
+</UserControl>

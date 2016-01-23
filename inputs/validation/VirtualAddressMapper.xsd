@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ActionBase" nillable="true" type="ActionBase" />
+  <xs:complexType name="ActionBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Notifier" abstract="true" />
+  <xs:element name="ActionAssociativeMemoryBase" nillable="true" type="ActionAssociativeMemoryBase" />
+  <xs:complexType name="ActionAssociativeMemoryBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ActionBase">
+        <xs:attribute name="ProcessPage" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActionMemoryBase" nillable="true" type="ActionMemoryBase" />
+  <xs:complexType name="ActionMemoryBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ActionBase">
+        <xs:attribute name="MemoryFrame" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddPageToMemory" nillable="true" type="AddPageToMemory" />
+  <xs:complexType name="AddPageToMemory">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ActionMemoryBase">
+        <xs:attribute name="ProcessPage" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddPageToAssociativeMemory" nillable="true" type="AddPageToAssociativeMemory" />
+  <xs:complexType name="AddPageToAssociativeMemory">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ActionAssociativeMemoryBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MappingRecordOfProcessAndMemory" nillable="true" type="MappingRecordOfProcessAndMemory" />
+  <xs:complexType name="MappingRecordOfProcessAndMemory">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="ProcessPage" type="xs:int" use="required" />
+        <xs:attribute name="MemoryFrame" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Addressing" nillable="true" type="Addressing" />
+  <xs:complexType name="Addressing">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="BitsToAddressPages" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MemoryAccessTime" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="QuantityOfPagesStorableInUserMemory" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IsAssociativeMemoryInUse" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="QuantityOfAddressesStorableInAssociativeMemory" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AssociativeMemoryAccessTime" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ProcessAddressRangeByLastAddress" type="ResolveVirtualAddress" />
+        </xs:sequence>
+        <xs:attribute name="AddressingBits" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ResolveVirtualAddress">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ActionBase">
+        <xs:attribute name="Address" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemovePageFromAssociativeMemory" nillable="true" type="RemovePageFromAssociativeMemory" />
+  <xs:complexType name="RemovePageFromAssociativeMemory">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ActionAssociativeMemoryBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemovePageFromMemory" nillable="true" type="RemovePageFromMemory" />
+  <xs:complexType name="RemovePageFromMemory">
+    <xs:complexContent mixed="false">
+      <xs:extension base="ActionMemoryBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualAddressMapper" nillable="true" type="VAM_Descriptor" />
+  <xs:complexType name="VAM_Descriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DescriptorBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Addressing" type="Addressing" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ProcessPageAndMemoryPageMapping" type="ArrayOfMappingRecordOfProcessAndMemory" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AssociativeMemoryInitialContent" type="ArrayOfInt" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ActionSequence" type="ArrayOfChoice1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DescriptorBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="FQN_NamespaceAndClassName" type="xs:string" />
+        <xs:attribute name="Title" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfMappingRecordOfProcessAndMemory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Mapping" nillable="true" type="MappingRecordOfProcessAndMemory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfInt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Page" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfChoice1">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element minOccurs="1" maxOccurs="1" name="AddPageToMemory" nillable="true" type="AddPageToMemory" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RemovePageFromMemory" nillable="true" type="RemovePageFromMemory" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RemoveFromAssociativeMemory" nillable="true" type="RemovePageFromAssociativeMemory" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ResolveVirtualAddress" nillable="true" type="ResolveVirtualAddress" />
+      <xs:element minOccurs="1" maxOccurs="1" name="AddToAssociativeMemory" nillable="true" type="AddPageToAssociativeMemory" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="ResolveVirtualAddress" nillable="true" type="ResolveVirtualAddress" />
+</xs:schema>

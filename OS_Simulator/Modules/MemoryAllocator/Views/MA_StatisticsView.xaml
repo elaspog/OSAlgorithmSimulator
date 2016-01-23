@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="MemoryAllocator.Views.MA_StatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="8*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.ColumnSpan="4" Grid.Row="0" FontSize="16" Margin="10,0,0,3"
+                       Text="Metrics"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Memory usage:"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SimulatorModel.Metrics.MemoryUsage}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="1" Text="[%]"/>
+            <TextBlock Grid.Column="3" Grid.Row="1" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Rate of used and unused spaces: "/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SimulatorModel.Metrics.RateOfUedAndAnusedSpaces}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="2" Text="[ratio]"/>
+            <TextBlock Grid.Column="3" Grid.Row="2" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Count of used partitions:"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SimulatorModel.Metrics.CountOfUsedPartitions}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="3" Text="[pieces]"/>
+            <TextBlock Grid.Column="3" Grid.Row="3" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Count of unused partitions:"/>
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding SimulatorModel.Metrics.CountOfUnusedPartitions}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="4" Text="[pieces]"/>
+            <TextBlock Grid.Column="3" Grid.Row="4" Text="" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Ratio of used and alld partitions:"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SimulatorModel.Metrics.RatioOfUsedAndAllPartitions}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="5" Text="[ratio]"/>
+            <TextBlock Grid.Column="3" Grid.Row="5" Text="" FontWeight="Bold"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Ratio of used and unused partitions:"/>
+            <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding SimulatorModel.Metrics.RatioOfUsedAndUnusedPartitions}" FontWeight="Bold"/>
+            <TextBlock Grid.Column="2" Grid.Row="6" Text="[ratio]"/>
+            <TextBlock Grid.Column="3" Grid.Row="6" Text="" FontWeight="Bold"/>
+
+        </Grid>
+
+    </StackPanel>
+
+</UserControl>

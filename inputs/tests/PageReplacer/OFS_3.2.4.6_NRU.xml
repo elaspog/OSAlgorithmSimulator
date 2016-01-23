@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PageReplacer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="PageReplacer.PageReplacer" Title="OFS 3246 NRU(3)">
+  <CountOfPagesForProcess>3</CountOfPagesForProcess>
+  <PageReplacerAlgorithm>
+    <AlgorithmName>NRU</AlgorithmName>
+  </PageReplacerAlgorithm>
+  <PageActionSequence>
+    <AccessPage Page="7" />
+    <SetRbitOnPage Page="7" />
+    <SetMbitOnPage Page="7" />
+    <AccessPage Page="9" />
+    <SetRbitOnPage Page="9" />
+    <AccessPage Page="2" />
+    <SetRbitOnPage Page="2" />
+	<PeriodRemoveAllRbit />
+    <AccessPage Page="1" />
+    <SetRbitOnPage Page="1" />
+    <AccessPage Page="5" />
+    <SetRbitOnPage Page="5" />
+    <AccessPage Page="5" />
+    <SetMbitOnPage Page="5" />
+	<PeriodRemoveAllRbit />
+    <AccessPage Page="8" />
+    <SetMbitOnPage Page="8" />
+    <SetRbitOnPage Page="8" />
+    <AccessPage Page="5" />
+    <SetRbitOnPage Page="5" />
+    <AccessPage Page="9" />
+    <SetRbitOnPage Page="9" />
+	<PeriodRemoveAllRbit />
+    <AccessPage Page="6" />
+    <SetMbitOnPage Page="6" />
+    <SetRbitOnPage Page="6" />
+    <AccessPage Page="2" />
+    <SetRbitOnPage Page="2" />
+    <AccessPage Page="8" />
+    <SetRbitOnPage Page="8" />
+	<PeriodRemoveAllRbit />
+    <AccessPage Page="0" />
+    <SetRbitOnPage Page="0" />
+  </PageActionSequence>
+  <MemoryAccessTime>10</MemoryAccessTime>
+  <PageFaultServiceTime>100</PageFaultServiceTime>
+</PageReplacer>

@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Simulator.Views.UserControls.SimulationSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Converters="clr-namespace:Simulator.Views.Converters">
+
+    <UserControl.Resources>
+        <Converters:ModuleNameConverter x:Key="ModuleNameConverter" />
+    </UserControl.Resources>
+    
+    <DockPanel>
+
+        <ListView   x:Name="simulationListView"
+                    ItemsSource="{Binding}" DockPanel.Dock="Top"
+                    DataContext="{Binding Repository.LoadedSimulations}"                              
+                    ScrollViewer.CanContentScroll="True" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    SelectionMode="Extended"
+                    Height="150"  >
+
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Simulation Name" Width="125"
+                                                DisplayMemberBinding="{Binding SimulationName}"></GridViewColumn>
+                    <GridViewColumn Header="Simulation Type"  Width="125">
+                        <GridViewColumn.DisplayMemberBinding>
+                            <Binding Path="SimulationType" Converter="{StaticResource ModuleNameConverter}"></Binding>
+                        </GridViewColumn.DisplayMemberBinding>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Status"  Width="70"
+                                                DisplayMemberBinding="{Binding Status}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+            
+            
+        </ListView>
+
+        <StackPanel DockPanel.Dock="Bottom" 
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    >
+
+            <Button Content="Load Simulation" 
+                    Command="{Binding LoadSimulationCommand}"/>
+            <Button Content="Open Simulation" 
+                    Command="{Binding OpenSimulationCommand}"/>
+            <Button Content="Remove from list" 
+                    Command="{Binding RemoveSimulationCommand}"/>
+            <Button Content="Clear list" 
+                    Command="{Binding ClearSimulationListCommand}" />
+
+        </StackPanel>
+
+    </DockPanel>
+
+</UserControl>

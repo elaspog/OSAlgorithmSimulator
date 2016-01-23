@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TaskScheduler xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="TaskScheduler.TaskScheduler" Title="SJF S1">
+  <SchedulerAlgorithm>
+    <AlgorithmName>SJF</AlgorithmName>
+  </SchedulerAlgorithm>
+  <Resources>
+    <Resource ResourceName="res_1" Quantity="2" />
+    <Resource ResourceName="res_2" Quantity="1" />
+  </Resources>
+  <Processes>
+    <Process ProcessName="P1">
+      <ArrivalTime>0</ArrivalTime>
+      <BurstSequence>
+        <CpuBurst BurstTime="8" />
+        <CpuBurst BurstTime="11" />
+      </BurstSequence>
+    </Process>
+    <Process ProcessName="P2">
+      <ArrivalTime>5</ArrivalTime>
+      <BurstSequence>
+        <CpuBurst BurstTime="1" />
+        <IoBurstAsynchronous BurstTime="9" ResourceName="res_1" />
+      </BurstSequence>
+    </Process>
+    <Process ProcessName="P3">
+      <ArrivalTime>1</ArrivalTime>
+      <BurstSequence>
+        <CpuBurst BurstTime="4" />
+        <IoBurstAsynchronous BurstTime="5" ResourceName="res_1" />
+      </BurstSequence>
+    </Process>
+  </Processes>
+  <AvarageOverheadTime>10</AvarageOverheadTime>
+</TaskScheduler>

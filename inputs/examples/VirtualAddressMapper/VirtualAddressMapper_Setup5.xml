@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VirtualAddressMapper xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" FQN_NamespaceAndClassName="VirtualAddressMapper.VirtualAddressMapper" Title="Sim5 TLB">
+  <Addressing AddressingBits="16" >
+    <BitsToAddressPages>6</BitsToAddressPages>
+    <MemoryAccessTime>100</MemoryAccessTime>    
+    <QuantityOfPagesStorableInUserMemory>20</QuantityOfPagesStorableInUserMemory>
+	<IsAssociativeMemoryInUse>true</IsAssociativeMemoryInUse>
+    <QuantityOfAddressesStorableInAssociativeMemory>10</QuantityOfAddressesStorableInAssociativeMemory>
+    <AssociativeMemoryAccessTime>20</AssociativeMemoryAccessTime>
+    <ProcessAddressRangeByLastAddress Address="12000" />
+  </Addressing>
+  <ProcessPageAndMemoryPageMapping>
+    <Mapping ProcessPage="1" MemoryFrame="0" />
+    <Mapping ProcessPage="5" MemoryFrame="4" />
+    <Mapping ProcessPage="9" MemoryFrame="4" />
+    <Mapping ProcessPage="4" MemoryFrame="14" />
+    <Mapping ProcessPage="3" MemoryFrame="13" />
+    <Mapping ProcessPage="12" MemoryFrame="4" />
+    <Mapping ProcessPage="0" MemoryFrame="3" />
+    <Mapping ProcessPage="9" MemoryFrame="7" />
+  </ProcessPageAndMemoryPageMapping>
+  <AssociativeMemoryInitialContent>
+    <Page>1</Page>
+    <Page>2</Page>
+	<Page>0</Page>
+    <Page>5</Page>
+  </AssociativeMemoryInitialContent>
+  <ActionSequence>
+    <ResolveVirtualAddress Address="1023" />
+    <ResolveVirtualAddress Address="1024" />
+    <ResolveVirtualAddress Address="2047" />
+    <ResolveVirtualAddress Address="4096" />
+    <ResolveVirtualAddress Address="4095" />
+    <ResolveVirtualAddress Address="80" />
+    <RemoveFromAssociativeMemory ProcessPage="0" />
+    <AddPageToMemory MemoryFrame="12" ProcessPage="2" />
+    <AddToAssociativeMemory ProcessPage="4" />
+    <AddPageToMemory MemoryFrame="14" ProcessPage="24" />
+    <ResolveVirtualAddress Address="0" />
+    <RemovePageFromMemory MemoryFrame="19" />
+    <RemovePageFromMemory MemoryFrame="0" />
+    <AddPageToMemory MemoryFrame="17" ProcessPage="10" />
+    <RemovePageFromMemory MemoryFrame="4" />
+    <ResolveVirtualAddress Address="11110" />
+    <ResolveVirtualAddress Address="100000" />
+    <ResolveVirtualAddress Address="1024" />
+  </ActionSequence>
+</VirtualAddressMapper>

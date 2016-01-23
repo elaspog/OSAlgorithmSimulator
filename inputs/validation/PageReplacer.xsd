@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PageActionBase" nillable="true" type="PageActionBase" />
+  <xs:complexType name="PageActionBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="Page" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Notifier" abstract="true" />
+  <xs:element name="PageAccess" nillable="true" type="PageAccess" />
+  <xs:complexType name="PageAccess">
+    <xs:complexContent mixed="false">
+      <xs:extension base="PageActionBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PageReplacerAlgorithm" nillable="true" type="PageReplacerAlgorithm" />
+  <xs:complexType name="PageReplacerAlgorithm">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AlgorithmName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Parameters" type="ArrayOfString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parameter" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PeriodRemoveAllRbit" nillable="true" type="PeriodRemoveAllRbit" />
+  <xs:complexType name="PeriodRemoveAllRbit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="PageActionBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PageReplacer" nillable="true" type="PR_Descriptor" />
+  <xs:complexType name="PR_Descriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DescriptorBase">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="CountOfPagesForProcess" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PageReplacerAlgorithm" type="PageReplacerAlgorithm" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PageActionSequence" type="ArrayOfChoice1" />
+          <xs:element minOccurs="1" maxOccurs="1" name="MemoryAccessTime" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="PageFaultServiceTime" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DescriptorBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="FQN_NamespaceAndClassName" type="xs:string" />
+        <xs:attribute name="Title" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfChoice1">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element minOccurs="1" maxOccurs="1" name="SetRbitOnPage" nillable="true" type="PageSetRbit" />
+      <xs:element minOccurs="1" maxOccurs="1" name="PeriodRemoveAllRbit" nillable="true" type="PeriodRemoveAllRbit" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RemoveRbitOnPage" nillable="true" type="PageRemoveRbit" />
+      <xs:element minOccurs="1" maxOccurs="1" name="SetMbitOnPage" nillable="true" type="PageSetMbit" />
+      <xs:element minOccurs="1" maxOccurs="1" name="AccessPage" nillable="true" type="PageAccess" />
+      <xs:element minOccurs="1" maxOccurs="1" name="RemoveMbitOnPage" nillable="true" type="PageRemoveMbit" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PageSetRbit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="PageActionBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PageRemoveRbit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="PageActionBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PageSetMbit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="PageActionBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PageRemoveMbit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="PageActionBase" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PageRemoveMbit" nillable="true" type="PageRemoveMbit" />
+  <xs:element name="PageRemoveRbit" nillable="true" type="PageRemoveRbit" />
+  <xs:element name="PageSetMbit" nillable="true" type="PageSetMbit" />
+  <xs:element name="PageSetRbit" nillable="true" type="PageSetRbit" />
+</xs:schema>

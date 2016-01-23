@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="TaskScheduler.Views.TS_SimulationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskScheduler.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <StackPanel>
+        
+        <TextBlock FontSize="16" Margin="10,0,0,3"
+                    Text="Simulation status"/>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Step: "></TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding Mytext}" FontWeight="Bold"></TextBlock>
+
+            <TextBlock Grid.Column="0" Grid.Row="1"  Text="Virtual time: "></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SimulatorModel.ActualStep}" FontWeight="Bold"></TextBlock>
+        </Grid>
+        
+            
+
+        <TextBlock FontSize="16" Margin="10,0,0,3"
+                       Text="Input status"/>
+
+        <local:NotYetArrivedProcessList />
+        
+        <TextBlock FontSize="16" Margin="10,0,0,3"
+                       Text="Task status"/>
+
+        <local:ProcessState />
+
+        <TextBlock FontSize="16" Margin="10,0,0,3"
+                       Text="Task burst sequence"/>
+
+        <local:ProcessInfo></local:ProcessInfo>
+       
+        <TextBlock FontSize="16" Margin="10,0,0,3"
+                       Text="Resource utilization"/>
+
+        <local:ResourceView></local:ResourceView>
+
+    </StackPanel>
+   
+</UserControl>

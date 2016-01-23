@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A8CFEDEE-83E3-42F1-AE7B-A24FC06E6BE3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VirtualAddressMapper</RootNamespace>
+    <AssemblyName>VirtualAddressMapper</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\SimulationDomain\AddressingExtended.cs" />
+    <Compile Include="Models\Descriptor\ActionBase.cs" />
+    <Compile Include="Models\Descriptor\ActionAssociativeMemoryBase.cs" />
+    <Compile Include="Models\Descriptor\ActionMemoryBase.cs" />
+    <Compile Include="Models\Descriptor\AddPageToMemory.cs" />
+    <Compile Include="Models\Descriptor\AddPageToAssociativeMemory.cs" />
+    <Compile Include="Models\Descriptor\MappingRecordOfProcessAndMemory.cs" />
+    <Compile Include="Models\Descriptor\Addressing.cs" />
+    <Compile Include="Models\Descriptor\RemovePageFromAssociativeMemory.cs" />
+    <Compile Include="Models\Descriptor\RemovePageFromMemory.cs" />
+    <Compile Include="Models\Descriptor\VAM_Descriptor.cs" />
+    <Compile Include="Models\Descriptor\ResolveVirtualAddress.cs" />
+    <Compile Include="Models\MyCloner.cs" />
+    <Compile Include="Models\SimulationDomain\BigIntegerExtensions.cs" />
+    <Compile Include="Models\SimulationDomain\FourElementTuple.cs" />
+    <Compile Include="Models\SimulationDomain\IndicatorRecord.cs" />
+    <Compile Include="Models\SimulationDomain\LargeStringNumberComparator.cs" />
+    <Compile Include="Models\SimulationDomain\Metrics.cs" />
+    <Compile Include="Models\SimulationDomain\NumberRadixConverter.cs" />
+    <Compile Include="Models\SimulationDomain\VeryLongNumberByNumberBaseInString.cs" />
+    <Compile Include="Models\VAM_SimulatorModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\VAM_ModuleViewModel.cs" />
+    <Compile Include="ViewModels\VAM_SimulatorViewModel.cs" />
+    <Compile Include="Views\Converters\BoolVisibilityConverter.cs" />
+    <Compile Include="Views\Converters\InteralToStringStartingWithZeroConverter.cs" />
+    <Compile Include="Views\Converters\NumberBaseConverter.cs" />
+    <Compile Include="Views\DataTemplateSelectors\ActionTemplateSelector.cs" />
+    <Compile Include="Views\DataTemplateSelectors\ProcessBarItemSelector.cs" />
+    <Compile Include="Views\UserControls\ActionTemplate.xaml.cs">
+      <DependentUpon>ActionTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\AddressNumberSystemSelection.xaml.cs">
+      <DependentUpon>AddressNumberSystemSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ProcePageMemPageMapping.xaml.cs">
+      <DependentUpon>ProcePageMemPageMapping.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ProcessBarVizualizer.xaml.cs">
+      <DependentUpon>ProcessBarVizualizer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VAM_InputView.xaml.cs">
+      <DependentUpon>VAM_InputView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VAM_SimulationView.xaml.cs">
+      <DependentUpon>VAM_SimulationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VAM_StatisticsView.xaml.cs">
+      <DependentUpon>VAM_StatisticsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VirtualAddressMapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Memento\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Simulator.Infrastructure\Simulator.Infrastructure.csproj">
+      <Project>{8af86653-2c01-4d9f-b227-7f34d55afcc8}</Project>
+      <Name>Simulator.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\UserControls\ActionTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\AddressNumberSystemSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ProcePageMemPageMapping.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ProcessBarVizualizer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VAM_InputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VAM_SimulationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VAM_StatisticsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="BurstDescriptor" nillable="true" type="BurstDescriptor" />
+  <xs:complexType name="BurstDescriptor" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="BurstTime" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Notifier" abstract="true" />
+  <xs:element name="CpuBurstDescriptor" nillable="true" type="CpuBurstDescriptor" />
+  <xs:complexType name="CpuBurstDescriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="BurstDescriptor" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IoBurstDescriptor" nillable="true" type="IoBurstDescriptor" />
+  <xs:complexType name="IoBurstDescriptor" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="BurstDescriptor">
+        <xs:attribute name="ResourceName" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IoBurstAsynchronousDescriptor" nillable="true" type="IoBurstAsynchronousDescriptor" />
+  <xs:complexType name="IoBurstAsynchronousDescriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="IoBurstDescriptor" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IoBurstSynchronousDescriptor" nillable="true" type="IoBurstSynchronousDescriptor" />
+  <xs:complexType name="IoBurstSynchronousDescriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="IoBurstDescriptor" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProcessDescriptor" nillable="true" type="ProcessDescriptor" />
+  <xs:complexType name="ProcessDescriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="ArrivalTime" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BurstSequence" type="ArrayOfChoice1" />
+        </xs:sequence>
+        <xs:attribute name="ProcessName" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfChoice1">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element minOccurs="1" maxOccurs="1" name="IoBurstSynchronous" nillable="true" type="IoBurstSynchronousDescriptor" />
+      <xs:element minOccurs="1" maxOccurs="1" name="IoBurstAsynchronous" nillable="true" type="IoBurstAsynchronousDescriptor" />
+      <xs:element minOccurs="1" maxOccurs="1" name="CpuBurst" nillable="true" type="CpuBurstDescriptor" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="ResourceDescriptor" nillable="true" type="ResourceDescriptor" />
+  <xs:complexType name="ResourceDescriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="ResourceName" type="xs:string" />
+        <xs:attribute name="Quantity" type="xs:int" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SchedulerAlgorithmDescriptor" nillable="true" type="SchedulerAlgorithmDescriptor" />
+  <xs:complexType name="SchedulerAlgorithmDescriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AlgorithmName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Parameters" type="ArrayOfString" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parameter" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskScheduler" nillable="true" type="TS_Descriptor" />
+  <xs:complexType name="TS_Descriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="DescriptorBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="SchedulerAlgorithm" type="SchedulerAlgorithmDescriptor" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Resources" type="ArrayOfResourceDescriptor" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Processes" type="ArrayOfProcessDescriptor" />
+          <xs:element minOccurs="1" maxOccurs="1" name="AvarageOverheadTime" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DescriptorBase" abstract="true">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Notifier">
+        <xs:attribute name="FQN_NamespaceAndClassName" type="xs:string" />
+        <xs:attribute name="Title" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfResourceDescriptor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Resource" nillable="true" type="ResourceDescriptor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfProcessDescriptor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Process" nillable="true" type="ProcessDescriptor" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

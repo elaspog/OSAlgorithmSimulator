@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="TaskScheduler.Views.TS_StatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:TaskScheduler.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <local:PercentageConverter x:Key="percentageConverter"></local:PercentageConverter>
+    </UserControl.Resources>
+    
+    <StackPanel>
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.ColumnSpan="4" Grid.Row="0" FontSize="16" Margin="10,0,0,3"
+                       Text="Calculated metrics"/>
+
+
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Overhead In thousandth Ms:"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SimulatorModel.Metrics.AvarageOverheadTimeInOneThousandthMs}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="1" Text="[ms/1000]" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Count Of Context Switchings:"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding SimulatorModel.Metrics.CountOfContextSwitchings}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="2" Text="[pieces]" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Count Of Task Schedulings:"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding SimulatorModel.Metrics.CountOfTaskSchedulings}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="3" Text="[pieces]" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Milliseconds Process Was Running:"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding SimulatorModel.Metrics.CountOfMillisecondsWhereProcessWasRunning}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="5" Text="[ms]" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Milliseconds Process Was Not Running:"/>
+            <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding SimulatorModel.Metrics.CountOfMillisecondsWhereProcessWasNotRunning}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="6" Text="[ms]" FontWeight="Bold"/>
+            
+            
+            
+            <TextBlock Grid.Column="0" Grid.Row="8" Text="Degree of multi-programming:"/>
+            <TextBlock Grid.Column="1" Grid.Row="8" Text="{Binding SimulatorModel.Metrics.DegreeOfMultiProgramming}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="8" Text="[pieces]" FontWeight="Bold"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="9" Text="CPU Utilization:"/>
+            <TextBlock Grid.Column="1" Grid.Row="9" Text="{Binding SimulatorModel.Metrics.CpuUtilization, Converter={StaticResource percentageConverter}}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="9" Text="[%]" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="10" Text="Throughput:"/>
+            <TextBlock Grid.Column="1" Grid.Row="10" Text="{Binding SimulatorModel.Metrics.Throughput}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="10" Text="[1/s]" FontWeight="Bold"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="11" Text="Waiting Time:"/>
+            <TextBlock Grid.Column="1" Grid.Row="11" Text="{Binding SimulatorModel.Metrics.WaitingTime}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="11" Text="[s]" FontWeight="Bold"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="12" Text="Turnaround time:"/>
+            <TextBlock Grid.Column="1" Grid.Row="12" Text="{Binding SimulatorModel.Metrics.TurnaroundTime}" FontWeight="Bold" TextAlignment="Right" />
+            <TextBlock Grid.Column="3" Grid.Row="12" Text="[s]" FontWeight="Bold"/>
+                        
+        </Grid>
+
+    </StackPanel>
+</UserControl>
